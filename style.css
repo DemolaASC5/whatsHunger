@@ -1,0 +1,48 @@
+@media only screen and (max-width: 800px) {
+    #links{
+        display: none;  
+    }
+}
+
+@media only screen and (min-width: 800px){
+    #Title h1{
+        display: none; 
+    }
+}
+
+
+body{
+    margin: 0; 
+}
+
+#navbar{ 
+    background-color: black;
+    z-index: 1;
+    margin: 0; 
+    display: flex; 
+    flex-direction: row; 
+    align-items: center; 
+}
+
+#navbar_img{
+    margin-right: 10px; 
+    margin-left: 10px; 
+}
+
+#navbar a{
+    text-decoration: none; 
+    color: white; 
+    vertical-align: center;
+    margin-left: 10px; 
+    margin-right: 10px; 
+}
+
+#navbar h1{
+    /* display: none;   */
+    color: white; 
+    font-size: 25px; 
+}
+
+
+ 
+
