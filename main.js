@@ -77,3 +77,35 @@ function createNewNav(){
     }
 }
 
+const video = document.querySelector('video');
+const button = document.querySelector('button');
+const canvas = document.querySelector('canvas');
+
+canvas.width = 640;
+canvas.height = 480;
+
+button.addEventListener("click", snapShot)
+
+function snapShot(){
+const ctx = canvas.getContext("2d");
+ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+
+   
+}
+
+const constraints = {
+    audio: false,
+    video: true
+ }
+ function handleSuccess(stream){
+     
+    video.srcObject = stream;
+    window.stream = stream;
+ }
+ 
+ if(navigator.mediaDevices){
+ navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess);
+ } else {
+    alert("Sorry, try again.");
+ }
+
