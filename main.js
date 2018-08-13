@@ -2,6 +2,7 @@ const logobar = document.querySelector('#logo');
 logobar.addEventListener('click', onClick); 
 let logo_counter = 0; 
 
+const foods = []; 
 const logoname = document.querySelector('#Title');
 const margin = screen.width/4 -50;  
 logoname.style.marginLeft = margin + "px"; 
@@ -15,8 +16,7 @@ function onClick(event){
 
 function createNewNav(){
     if(logo_counter < 1 ){
-        const navbar1 = document.createElement('div');
-        navbar1.setAttribute("id", "navbar1");  
+        const navbar1 = document.querySelector('#navbar1');
         const links1 = document.createElement('div'); 
         links1.setAttribute("id","links1");
         const home1div = document.createElement('div');  
@@ -63,10 +63,10 @@ function createNewNav(){
         // logoname.style.marginRight = "" +69+ "px";//"auto"; 
         // document.body.appendChild(logoname);
         // document.body.appendChild(links1);
-        document.body.appendChild(navbar1); 
+        // document.body.appendChild(navbar1); 
         // const navbar = document.querySelector('#navbar'); 
         // navbar.appendChild(logoname); 
-        // navbar.appendChild(navbar1); 
+        navbar.appendChild(navbar1); 
         console.log(margin); 
     }
     else if (logo_counter % 2 == 0){
@@ -89,8 +89,37 @@ button.addEventListener("click", snapShot)
 function snapShot(){
 const ctx = canvas.getContext("2d");
 ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+let img1 = document.querySelector('canvas'); 
+img1 = canvas.toDataURL();
+img1 = img1.replace("data:image/png;base64,", "");
+console.log(img1); 
+// const img = document.createElement('img'); 
+// img.setAttribute('src', img1); 
+// console.log(img.src); 
+const app = new Clarifai.App({
+    apiKey: 'b9cc00249dc74a449cbdef1d7b0b82a5'
+   });
+app.models.predict("bd367be194cf45149e75f01d59f77ba7", {base64: img1}).then(
+    function(response) {
+        console.log(response.outputs[0].data.concepts[0].value); 
+        for (let i = 0; i < response.outputs[0].data.concepts.length; i++){
+            if(response.outputs[0].data.concepts[i].value > 0.9){
+                foods.push(response.outputs[0].data.concepts[i].name); 
+                const food = document.createElement('button');
+                food.innerText = foods[i];
+                document.body.appendChild(food);   
+            }
+            // console.log(response.outputs[0].data.concepts[i].name); 
+        }
+        // do something with response
+    },
+    function(err) {
+        console.log('it failed'); 
+        console.log(err); 
+      // there was an error
+    }
+  ); 
 
-   
 }
 
 const constraints = {
@@ -107,5 +136,29 @@ const constraints = {
  navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess);
  } else {
     alert("Sorry, try again.");
- }
+ } 
 
+ 
+// const Clarifai = require('clarifai');
+
+
+
+// app.models.predict("bd367be194cf45149e75f01d59f77ba7", "" + img1).then(
+//     function(response) {
+//         console.log(response.outputs[0].data.concepts[0].value); 
+//         for (let i = 0; i < response.outputs[0].data.concepts.length; i++){
+//             if(response.outputs[0].data.concepts[i].value > 0.9){
+//                 foods.push(response.outputs[0].data.concepts[i].name); 
+//                 const food = document.createElement('button');
+//                 food.innerText = foods[i];
+//                 document.body.appendChild(food);   
+//             }
+//             // console.log(response.outputs[0].data.concepts[i].name); 
+//         }
+//         // do something with response
+//     },
+//     function(err) {
+//         console.log('it failed'); 
+//       // there was an error
+//     }
+//   ); 

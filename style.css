@@ -20,8 +20,17 @@ body{
     z-index: 1;
     margin: 0; 
     display: flex; 
-    flex-direction: row; 
+    /* flex-direction: row;  */
     align-items: center; 
+}
+
+#navbar1{
+    display: flex; 
+    flex-direction: column; 
+    position: absolute;
+    width: 100%;
+    top: 62px;
+    left: 0px;
 }
 
 #navbar_img{
