@@ -1,6 +1,7 @@
 @media only screen and (max-width: 800px) {
 #links{
-        display: none;  
+        display: none; 
+        
     }
 }
 
@@ -23,6 +24,7 @@ body{
 }
 
 #navbar{ 
+    font-family: cursive;
     background-color: black;
     z-index: 1;
     margin: 0; 
@@ -30,9 +32,11 @@ body{
     width: 100vw;
     /* flex-direction: row;  */
     align-items: center; 
+    text-decoration-color: bisque;
 }
 
 #navbar1{
+    font-family: cursive;
     display: flex; 
     flex-direction: column; 
     position: absolute;
@@ -53,17 +57,19 @@ video{
 }
 
 #navbar a{
-    text-decoration: none; 
+    text-decoration: black; 
     color: white; 
     vertical-align: center;
     margin-left: 10px; 
     margin-right: 10px; 
+    
 }
 
 #navbar h1{
     /* display: none;   */
     color: white; 
     font-size: 25px; 
+    
 }
 
 canvas{
