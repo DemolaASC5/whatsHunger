@@ -88,65 +88,71 @@ canvas.height = 480;
 button.addEventListener("click", snapShot)
 
 function snapShot(){
-const ctx = canvas.getContext("2d");
-ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
-let img1 = document.querySelector('canvas'); 
-img1 = canvas.toDataURL();
-img1 = img1.replace("data:image/png;base64,", "");
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+    let img1 = document.querySelector('canvas'); 
+    img1 = canvas.toDataURL();
+    img1 = img1.replace("data:image/png;base64,", "");
 
-const app = new Clarifai.App({
-    apiKey: 'b9cc00249dc74a449cbdef1d7b0b82a5'
-   });
-app.models.predict("bd367be194cf45149e75f01d59f77ba7", {base64: img1}).then(
-    function(response) {
-        const definefood = document.createElement('p'); 
-        definefood.innerText = "Please choose an option that best identifies your food.";
-        document.body.appendChild(definefood); 
-        for (let i = 0; i < response.outputs[0].data.concepts.length; i++){
-            if(response.outputs[0].data.concepts[i].value > 0.9){
-                foods.push(response.outputs[0].data.concepts[i].name); 
-                const food = document.createElement('button');
-                food.innerText = foods[i]; 
-                document.body.appendChild(food);   
+    const app = new Clarifai.App({
+        apiKey: 'b9cc00249dc74a449cbdef1d7b0b82a5'
+    });
+    app.models.predict("bd367be194cf45149e75f01d59f77ba7", {base64: img1}).then(
+        function(response) {
+            const definefood = document.createElement('p'); 
+            definefood.innerText = "Please choose an option that best identifies your food.";
+            document.body.appendChild(definefood); 
+            for (let i = 0; i < response.outputs[0].data.concepts.length; i++){
+                if(response.outputs[0].data.concepts[i].value > 0.9){
+                    foods.push(response.outputs[0].data.concepts[i].name); 
+                    const food = document.createElement('button');
+                    food.innerText = foods[i]; 
+                    document.body.appendChild(food);   
+                }
             }
+            const none = document.createElement('button');
+            none.setAttribute("id", "none");
+            none.innerText = "None of the above"; 
+            document.body.appendChild(none);    
+            let button1 = document.querySelector('#none'); 
+            button1.addEventListener('click', gotoMaps);  
+            // do something with response
+        },
+        function(err) {
+            console.log('it failed'); 
+            console.log(err); 
+        // there was an error
         }
-        const none = document.createElement('button');
-        none.setAttribute("id", "none");
-        none.innerText = "None of the above"; 
-        document.body.appendChild(none);    
-        let button1 = document.querySelector('#none'); 
-        button1.addEventListener('click', gotoMaps);  
-        // do something with response
-    },
-    function(err) {
-        console.log('it failed'); 
-        console.log(err); 
-      // there was an error
-    }
-  ); 
-
+    );
 }
 
 const constraints = {
     audio: false,
     video: true
- }
- function handleSuccess(stream){
-     
+}
+
+function handleSuccess(stream){
     video.srcObject = stream;
     window.stream = stream;
- }
+}
  
  if(navigator.mediaDevices){
- navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess);
+    navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess);
  } else {
     alert("Sorry, try again.");
  } 
 
  
 // const Clarifai = require('clarifai');
-function gotoMaps(){
-    console.log("hi"); 
-    document.querySelector('button').style.display = "none";
-}
+// function gotoMaps(){
+//     console.log("hi"); 
+//     document.querySelector('button').style.display = "none";
+// }
 
+function initMap() {
+    console.log('this happens');
+    const map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+    });
+}
