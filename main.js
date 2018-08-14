@@ -146,25 +146,7 @@ const constraints = {
  
 // const Clarifai = require('clarifai');
 function gotoMaps(){
-    document.querySelector('button').style.display = "none";
+    // console.log("hi"); 
+    // document.querySelector('button').style.display = "none";
 }
 
-// app.models.predict("bd367be194cf45149e75f01d59f77ba7", "" + img1).then(
-//     function(response) {
-//         console.log(response.outputs[0].data.concepts[0].value); 
-//         for (let i = 0; i < response.outputs[0].data.concepts.length; i++){
-//             if(response.outputs[0].data.concepts[i].value > 0.9){
-//                 foods.push(response.outputs[0].data.concepts[i].name); 
-//                 const food = document.createElement('button');
-//                 food.innerText = foods[i];
-//                 document.body.appendChild(food);   
-//             }
-//             // console.log(response.outputs[0].data.concepts[i].name); 
-//         }
-//         // do something with response
-//     },
-//     function(err) {
-//         console.log('it failed'); 
-//       // there was an error
-//     }
-//   ); 
