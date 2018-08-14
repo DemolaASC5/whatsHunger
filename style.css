@@ -66,6 +66,8 @@ video{
     font-size: 25px; 
 }
 
-
+canvas{
+    width: 100vw;
+}
  
 

@@ -82,8 +82,8 @@ const video = document.querySelector('video');
 const button = document.querySelector('button');
 const canvas = document.querySelector('canvas');
 
-// canvas.width = 640;
-// canvas.height = 480;
+canvas.width = 640;
+canvas.height = 480;
 
 button.addEventListener("click", snapShot)
 
