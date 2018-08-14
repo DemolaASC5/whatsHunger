@@ -1,14 +1,20 @@
 @media only screen and (max-width: 800px) {
-    #links{
+#links{
         display: none;  
     }
 }
 
 @media only screen and (min-width: 800px){
     #Title h1{
-        display: none; 
+            display: none; 
+        }
     }
+    
+html{
+    background-color: bisque;
 }
+
+
 
 
 body{
@@ -31,6 +37,12 @@ body{
     width: 100%;
     top: 62px;
     left: 0px;
+    color: black; 
+}
+.camera{
+   margin-left: auto; 
+   margin-right: auto;
+   
 }
 
 #navbar_img{
