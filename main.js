@@ -1,6 +1,7 @@
 const logobar = document.querySelector('#logo'); 
 logobar.addEventListener('click', onClick); 
 let logo_counter = 0; 
+let button1; 
 
 const foods = []; 
 const logoname = document.querySelector('#Title');
@@ -92,25 +93,29 @@ ctx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
 let img1 = document.querySelector('canvas'); 
 img1 = canvas.toDataURL();
 img1 = img1.replace("data:image/png;base64,", "");
-console.log(img1); 
-// const img = document.createElement('img'); 
-// img.setAttribute('src', img1); 
-// console.log(img.src); 
+
 const app = new Clarifai.App({
     apiKey: 'b9cc00249dc74a449cbdef1d7b0b82a5'
    });
 app.models.predict("bd367be194cf45149e75f01d59f77ba7", {base64: img1}).then(
     function(response) {
-        console.log(response.outputs[0].data.concepts[0].value); 
+        const definefood = document.createElement('p'); 
+        definefood.innerText = "Please choose an option that best identifies your food.";
+        document.body.appendChild(definefood); 
         for (let i = 0; i < response.outputs[0].data.concepts.length; i++){
             if(response.outputs[0].data.concepts[i].value > 0.9){
                 foods.push(response.outputs[0].data.concepts[i].name); 
                 const food = document.createElement('button');
-                food.innerText = foods[i];
+                food.innerText = foods[i]; 
                 document.body.appendChild(food);   
             }
-            // console.log(response.outputs[0].data.concepts[i].name); 
         }
+        const none = document.createElement('button');
+        none.setAttribute("id", "none");
+        none.innerText = "None of the above"; 
+        document.body.appendChild(none);    
+        let button1 = document.querySelector('#none'); 
+        button1.addEventListener('click', gotoMaps);  
         // do something with response
     },
     function(err) {
@@ -140,8 +145,9 @@ const constraints = {
 
  
 // const Clarifai = require('clarifai');
-
-
+function gotoMaps(){
+    document.querySelector('button').style.display = "none";
+}
 
 // app.models.predict("bd367be194cf45149e75f01d59f77ba7", "" + img1).then(
 //     function(response) {
