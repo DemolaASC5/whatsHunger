@@ -1,0 +1,111 @@
+@media only screen and (max-width: 800px) {
+    #links{
+            display: none; 
+            
+        }
+    }
+    
+    @media only screen and (min-width: 800px){
+        #Title h1{
+                display: none; 
+            }
+        }
+    
+    html{
+        background-color: aqua;
+    }
+    
+    body{
+        margin: 0; 
+    }
+    
+    #navbar{ 
+        font-family: cursive;
+        background-color: black;
+        z-index: 1;
+        margin: 0; 
+        display: flex; 
+        width: 100vw;
+        /* flex-direction: row;  */
+        align-items: center; 
+        text-decoration-color: bisque;
+    }
+    h1{
+        color: black;
+    }
+    
+    #navbar1{
+        font-family: cursive;
+        display: flex; 
+        flex-direction: column; 
+        position: absolute;
+        width: 100vw;
+        top: 62px;
+        left: 0px;
+        color: black; 
+    }
+    video{
+       margin-left: auto; 
+       margin-right: auto;
+       width: 100vw;
+    }
+    
+    #navbar_img{
+        margin-right: 10px; 
+        margin-left: 10px; 
+    }
+    
+    #navbar a{
+        text-decoration: black; 
+        color: aliceblue;
+        vertical-align: center;
+        margin-left: 10px; 
+        margin-right: 10px; 
+        
+    }
+    .button{
+        font-family: cursive;
+        color: crimson;
+        background-color: black;
+        text-align: center;
+        border-radius: 50px;
+        padding: 18px;
+        width: 76px;
+        height: 72px;
+    }
+    
+    #navbar h1{
+        /* display: none;   */
+        color: white; 
+        font-size: 25px; 
+        
+    }
+    
+    canvas{
+        width: 100vw;
+    }
+    
+    #map {
+        height: 400px;  /* The height is 400 pixels */
+        /* width: 100vw;   The width is the width of the web page  */
+    }
+    
+    #About{ 
+        display: none; 
+    }
+    
+    #button_div button{ 
+        font-family: cursive;
+        color: white;
+        border-radius: 50px;
+        background-color: black;
+        padding: 10px;
+    }
+    
+    #demo img{ 
+        width: 100%; 
+    }
+
+    #everything{
+        display: none; 
+    }

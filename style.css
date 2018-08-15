@@ -101,3 +101,7 @@ canvas{
     background-color: black;
     padding: 10px;
 }
+
+#demo img{ 
+    width: 100%; 
+}

@@ -182,8 +182,12 @@ function saveFood(food){
     // document.getElementById("what_food").action = nothing;
 }
 
+function newDoc() {
+    window.location.assign("index2.html"); 
+}
 
 function initMap() {
+    newDoc(); 
     console.log('this happens');
     const map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -34.397, lng: 150.644},

@@ -6,15 +6,56 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style2.css">
+    <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js">
+    </script>
+    <script src="maps.js" defer></script>
 </head>
 <body>
-    <p>It worked</p>
-    </div>  
-        <div id = 'navbar1'>
-    </div>
-    <div id = "About">
-        <h1 id = "maptitle"></h1>
-    <div id = 'demo'></div>
-    </div>
+        <div id = "navbar">
+                <div id = "navbar_img">
+                    <img id = "logo" src="https://image.ibb.co/hFy8gU/what_hunger.png" alt="" height="50" width="50">
+                </div>
+                <div id = 'links'>
+                    <a href="#Home">Home</a>
+                    <a href="#About">About</a>
+                    <a href="#Donate">Donate</a>
+                </div>
+                <div id = "Title">
+                    <h1 id = "Header"> What's Hunger</h1>
+                </div>
+            </div>  
+            <div id = 'navbar1'>
+            </div>
+            <center>
+        <div id = 'everything'>
+            <div id="camera">
+                <video autoplay> </video>
+                <button class="button"> Click here </button>
+                <canvas></canvas>
+            </div>
+            <div id = "button_div" >
+                    <p id = 'definefood'>
+                        Please choose an option that best identifies your food.
+                    </p>
+                </div>
+            
+            <!-- <script async defer
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClt7hLxNNQQk0Ekv1J0QWS3bWuKkvW5Ks&callback=initMap">
+            </script> -->
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClt7hLxNNQQk0Ekv1J0QWS3bWuKkvW5Ks&libraries=places"></script>
+            <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClt7hLxNNQQk0Ekv1J0QWS3bWuKkvW5Ks&libraries=places" defer></script> -->
+        </center>
+        
+            <form id = 'what_food'>
+                Don't see your food?<br>
+                <input id = 'foodInput' type="text" name="food">
+                <input id = 'submit' type="submit" value="Submit">
+            </form>
+        </div>
+            <div id = "About">
+                <h1 id = "maptitle"></h1>
+            <div id = 'demo'></div>
+            </div>
 </body>
 </html>
