@@ -170,6 +170,7 @@ function gotoMaps(event){
     // } 
 
     saveFood(event.srcElement.id);
+    window.location.assign("index2.html"); 
 }
 
 function saveFood(food){
@@ -181,13 +182,10 @@ function saveFood(food){
     food_form.style.display = "none"; 
     // document.getElementById("what_food").action = nothing;
 }
-
-function newDoc() {
-    window.location.assign("index2.html"); 
-}
+    
 
 function initMap() {
-    newDoc(); 
+    
     console.log('this happens');
     const map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -34.397, lng: 150.644},
