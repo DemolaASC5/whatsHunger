@@ -4,6 +4,8 @@ let logo_counter = 0;
 const logoname = document.querySelector('#Title');
 const margin = screen.width/4 -50;  
 logoname.style.marginLeft = margin + "px"; 
+const button_div = document.querySelector('#button_div'); 
+button_div.style.display = "none"; 
 // logoname.style.marginRight = "auto"; 
 // console.log(logoname.style.width.length); 
 
@@ -100,23 +102,24 @@ function snapShot(){
         function(response) {
             const foods = [];
 
-            const definefood = document.createElement('p'); 
-            definefood.setAttribute("id", "definefood"); 
-            definefood.innerText = "Please choose an option that best identifies your food.";
-            document.body.appendChild(definefood); 
+            // const definefood = document.createElement('p'); 
+            // definefood.setAttribute("id", "definefood"); 
+            // definefood.innerText = "Please choose an option that best identifies your food.";
+            // document.body.appendChild(definefood); 
 
             for (let i = 0; i < response.outputs[0].data.concepts.length; i++){
                 if(response.outputs[0].data.concepts[i].value > 0.9){
                     foods.push(response.outputs[0].data.concepts[i].name);   
                 }
             }
-
+            button_div.style.display = "initial"; 
             for(let i = 0; i < foods.length; i++){
                 const food = document.createElement('button');
                 food.setAttribute('id', foods[i]);
                 food.innerText = foods[i];
                 food.addEventListener('click', gotoMaps); 
                 document.body.appendChild(food);
+                button_div.appendChild(food); 
             }
 
             const food_form = document.querySelector('#what_food'); 
