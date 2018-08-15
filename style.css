@@ -31,7 +31,7 @@ body{
     text-decoration-color: bisque;
 }
 h1{
-    color: aqua;
+    color: black;
 }
 
 #navbar1{
@@ -63,7 +63,7 @@ video{
     margin-right: 10px; 
     
 }
-button{
+.button{
     font-family: cursive;
     color: crimson;
     background-color: black;
@@ -92,4 +92,12 @@ canvas{
 
 #About{ 
     display: none; 
+}
+
+#button_div button{ 
+    font-family: cursive;
+    color: white;
+    border-radius: 50px;
+    background-color: black;
+    padding: 15px;
 }
