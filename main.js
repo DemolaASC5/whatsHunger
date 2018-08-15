@@ -177,6 +177,8 @@ function saveFood(food){
     maptitle.innerText = "Donate " + food + " to:" 
     const about = document.querySelector('#About');  
     about.style.display = "initial"; 
+    button_div.style.display = 'none'; 
+    food_form.style.display = "none"; 
     // document.getElementById("what_food").action = nothing;
 }
 
