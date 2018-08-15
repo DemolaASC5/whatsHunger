@@ -1,15 +1,14 @@
 const logobar = document.querySelector('#logo'); 
 logobar.addEventListener('click', onClick); 
-let logo_counter = 0; 
-let button1; 
-
-const foods = []; 
+let logo_counter = 0;
 const logoname = document.querySelector('#Title');
 const margin = screen.width/4 -50;  
 logoname.style.marginLeft = margin + "px"; 
 // logoname.style.marginRight = "auto"; 
 // console.log(logoname.style.width.length); 
 
+const food_form = document.querySelector('#what_food'); 
+food_form.style.display = "none"; 
 function onClick(event){ 
     createNewNav();
     logo_counter++;  
@@ -99,24 +98,42 @@ function snapShot(){
     });
     app.models.predict("bd367be194cf45149e75f01d59f77ba7", {base64: img1}).then(
         function(response) {
+            const foods = [];
+
             const definefood = document.createElement('p'); 
+            definefood.setAttribute("id", "definefood"); 
             definefood.innerText = "Please choose an option that best identifies your food.";
             document.body.appendChild(definefood); 
+
             for (let i = 0; i < response.outputs[0].data.concepts.length; i++){
                 if(response.outputs[0].data.concepts[i].value > 0.9){
-                    foods.push(response.outputs[0].data.concepts[i].name); 
-                    const food = document.createElement('button');
-                    food.innerText = foods[i]; 
-                    document.body.appendChild(food);   
+                    foods.push(response.outputs[0].data.concepts[i].name);   
                 }
             }
-            const none = document.createElement('button');
-            none.setAttribute("id", "none");
-            none.innerText = "None of the above"; 
-            document.body.appendChild(none);    
-            let button1 = document.querySelector('#none'); 
-            button1.addEventListener('click', gotoMaps);  
-            // do something with response
+
+            for(let i = 0; i < foods.length; i++){
+                const food = document.createElement('button');
+                food.setAttribute('id', foods[i]);
+                food.innerText = foods[i];
+                food.addEventListener('click', gotoMaps); 
+                document.body.appendChild(food);
+            }
+
+            const food_form = document.querySelector('#what_food'); 
+            const foodInput = document.querySelector('#foodInput');
+            food_form.style.display = "inline-block";
+
+            const submit = document.querySelector('#submit'); 
+            submit.addEventListener('click', function(evt) {
+                evt.preventDefault();
+                saveFood(foodInput.value);
+            }); 
+
+            // const none = document.createElement('button');
+            // none.setAttribute("id", "none");
+            // none.innerText = "I don't see my food"; 
+            // none.addEventListener('click', gotoMaps); 
+            // document.body.appendChild(none); 
         },
         function(err) {
             console.log('it failed'); 
@@ -142,12 +159,24 @@ function handleSuccess(stream){
     alert("Sorry, try again.");
  } 
 
- 
-// const Clarifai = require('clarifai');
-// function gotoMaps(){
-//     console.log("hi"); 
-//     document.querySelector('button').style.display = "none";
-// }
+function gotoMaps(event){ 
+    // const all = document.querySelectorAll('input'); 
+    
+    // for(const item of all){
+    //     item.style.display = "none"; 
+    // } 
+
+    saveFood(event.srcElement.id);
+}
+
+function saveFood(food){
+    const maptitle = document.querySelector('#maptitle'); 
+    maptitle.innerText = "Donate " + food + " to:" 
+    const about = document.querySelector('#About');  
+    about.style.display = "initial"; 
+    // document.getElementById("what_food").action = nothing;
+}
+
 
 function initMap() {
     console.log('this happens');
@@ -156,3 +185,4 @@ function initMap() {
         zoom: 8
     });
 }
+

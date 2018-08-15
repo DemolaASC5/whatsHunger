@@ -9,7 +9,9 @@
     <script src="main.js" defer></script>
     <script src="clarify.js" defer></script>
     <script src="style.css"></script>
-    <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js"></script>
+    <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js">
+    </script>
+    <script src="maps.js" defer></script>
 </head>
 
 <body>
@@ -34,10 +36,22 @@
         <button> Click here </button>
         <canvas></canvas>
     </div>
-    <div id="map"></div>
-    <script async defer
+    
+    <!-- <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClt7hLxNNQQk0Ekv1J0QWS3bWuKkvW5Ks&callback=initMap">
-    </script>
+    </script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClt7hLxNNQQk0Ekv1J0QWS3bWuKkvW5Ks&libraries=places"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClt7hLxNNQQk0Ekv1J0QWS3bWuKkvW5Ks&libraries=places" defer></script> -->
 </center>
+
+    <form id = 'what_food'>
+        Don't see your food?<br>
+        <input id = 'foodInput' type="text" name="food">
+        <input id = 'submit' type="submit" value="Submit">
+    </form>
+    <div id = "About">
+        <h1 id = "maptitle"></h1>
+    <div id = 'demo'></div>
+    </div>
 </body>
 </html>

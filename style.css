@@ -14,10 +14,6 @@ html{
     background-color: bisque;
 }
 
-
-
-
-
 body{
     margin: 0; 
 }
@@ -72,6 +68,9 @@ canvas{
 
 #map {
     height: 400px;  /* The height is 400 pixels */
-    width: 100vw;  /* The width is the width of the web page */
+    /* width: 100vw;   The width is the width of the web page  */
 }
 
+#About{ 
+    display: none; 
+}
