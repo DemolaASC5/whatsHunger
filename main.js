@@ -27,7 +27,7 @@ function createNewNav(){
         const about1div = document.createElement('div'); 
         const about1 = document.createElement('a'); 
         about1.innerText = "About"; 
-        about1.setAttribute('href',"#About");
+        about1.setAttribute('href','index2.html');
         about1div.appendChild(about1); 
         const donate1div = document.createElement('div'); 
         const donate1 = document.createElement('a'); 
