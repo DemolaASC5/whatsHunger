@@ -6,8 +6,8 @@ const margin = screen.width/4 -50;
 logoname.style.marginLeft = margin + "px"; 
 const button_div = document.querySelector('#button_div'); 
 button_div.style.display = "none"; 
-// logoname.style.marginRight = "auto"; 
-// console.log(logoname.style.width.length); 
+let foodelement; 
+
 
 const food_form = document.querySelector('#what_food'); 
 food_form.style.display = "none"; 
@@ -24,18 +24,18 @@ function createNewNav(){
         const home1div = document.createElement('div');  
         const home1 = document.createElement('a'); 
         home1.innerText = "Home"; 
-        home1.setAttribute('href',"#Home");
+        home1.setAttribute('href',"index3.html");
         home1div.appendChild(home1); 
         const about1div = document.createElement('div'); 
         const about1 = document.createElement('a'); 
-        about1.innerText = "About"; 
-        about1.setAttribute('href',"#About");
+        about1.innerText = "Food Banks"; 
+        about1.setAttribute('href',"index2.html");
         about1div.appendChild(about1); 
         const donate1div = document.createElement('div'); 
         const donate1 = document.createElement('a'); 
-        donate1.innerText = "Donate";
+        donate1.innerText = "Donate Food";
         donate1div.appendChild(donate1); 
-        donate1.setAttribute('href',"#Donate"); 
+        donate1.setAttribute('href',"index.html"); 
         home1div.style.backgroundColor = "black"; home1div.style.paddingTop= "25px"; 
         about1div.style.backgroundColor = "black"; about1div.style.paddingTop= "25px"; 
         donate1div.style.backgroundColor = "black"; donate1div.style.paddingTop= "25px";
@@ -51,25 +51,10 @@ function createNewNav(){
         donate1div.style.width = "20%"; 
         links1.style.display = "float"; 
         links1.style.flexDirection= "column"; 
-        // home1.style.marginLeft = "10px"; 
-        // home1.style.marginRight = "10px";
-        // about1.style.marginLeft = "10px"; 
-        // about1.style.marginRight = "10px";
-        // donate1.style.marginLeft = "10px"; 
         home1.style.color = "white"; home1.style.textDecoration = "none"; 
         about1.style.color = "white"; about1.style.textDecoration = "none"; 
         donate1.style.color = "white"; donate1.style.textDecoration = "none";  
         navbar1.appendChild(links1); 
-        // logoname.innerText = "What's Hunger"; logoname.style.color ="white"; 
-        // logoname.style.marginLeft = "" + screen.width/8 + "px" //"auto"; 
-        // logoname.style.marginRight = "" +69+ "px";//"auto"; 
-        // document.body.appendChild(logoname);
-        // document.body.appendChild(links1);
-        // document.body.appendChild(navbar1); 
-        // const navbar = document.querySelector('#navbar'); 
-        // navbar.appendChild(logoname); 
-        navbar.appendChild(navbar1); 
-        console.log(margin); 
     }
     else if (logo_counter % 2 == 0){
         navbar1.style.display = 'none'; 
@@ -102,11 +87,6 @@ function snapShot(){
         function(response) {
             const foods = [];
 
-            // const definefood = document.createElement('p'); 
-            // definefood.setAttribute("id", "definefood"); 
-            // definefood.innerText = "Please choose an option that best identifies your food.";
-            // document.body.appendChild(definefood); 
-
             for (let i = 0; i < response.outputs[0].data.concepts.length; i++){
                 if(response.outputs[0].data.concepts[i].value > 0.9){
                     foods.push(response.outputs[0].data.concepts[i].name);   
@@ -123,8 +103,11 @@ function snapShot(){
             }
 
             const food_form = document.querySelector('#what_food'); 
+            const food_formp = document.querySelector('#what_food_p'); 
             const foodInput = document.querySelector('#foodInput');
             food_form.style.display = "inline-block";
+            food_form.style.textAlign = "center"; 
+            food_formp.style.marginLeft = "10px"; 
 
             const submit = document.querySelector('#submit'); 
             submit.addEventListener('click', function(evt) {
@@ -132,11 +115,6 @@ function snapShot(){
                 saveFood(foodInput.value);
             }); 
 
-            // const none = document.createElement('button');
-            // none.setAttribute("id", "none");
-            // none.innerText = "I don't see my food"; 
-            // none.addEventListener('click', gotoMaps); 
-            // document.body.appendChild(none); 
         },
         function(err) {
             console.log('it failed'); 
@@ -163,33 +141,20 @@ function handleSuccess(stream){
  } 
 
 function gotoMaps(event){ 
-    // const all = document.querySelectorAll('input'); 
-    
-    // for(const item of all){
-    //     item.style.display = "none"; 
-    // } 
-
     saveFood(event.srcElement.id);
-    window.location.assign("index2.html"); 
 }
 
 function saveFood(food){
-    const maptitle = document.querySelector('#maptitle'); 
-    maptitle.innerText = "Donate " + food + " to:" 
-    const about = document.querySelector('#About');  
-    about.style.display = "initial"; 
+    // const maptitle = document.querySelector('#maptitle'); 
+    // maptitle.innerText = "Donate " + food + " to:" 
+    // const about = document.querySelector('#About');  
+    // about.style.display = "initial"; 
+
     button_div.style.display = 'none'; 
     food_form.style.display = "none"; 
-    // document.getElementById("what_food").action = nothing;
+    window.location.assign("index2.html?value=" + food); 
+    foodelement = window.location.search.substring(7); 
+    console.log(foodelement);
 }
-    
 
-function initMap() {
-    
-    console.log('this happens');
-    const map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-    });
-}
 

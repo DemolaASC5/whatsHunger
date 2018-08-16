@@ -11,7 +11,7 @@
     <script src="style.css"></script>
     <script type="text/javascript" src="https://sdk.clarifai.com/js/clarifai-latest.js">
     </script>
-    <script src="maps.js" defer></script>
+    <!-- <script src="maps.js" defer></script> -->
 </head>
 
 <body>
@@ -20,9 +20,9 @@
             <img id = "logo" src="https://image.ibb.co/hFy8gU/what_hunger.png" alt="" height="50" width="50">
         </div>
         <div id = 'links'>
-            <a href="#Home">Home</a>
-            <a href="#About">About</a>
-            <a href="#Donate">Donate</a>
+            <a href="index3.html">Home</a>
+            <a href="index2.html">Nearby Food Banks</a>
+            <a href="index.html">Donate Food</a>
         </div>
         <div id = "Title">
             <h1 id = "Header"> What's Hunger</h1>
@@ -33,7 +33,7 @@
     <center>
     <div id="camera">
         <video autoplay> </video>
-        <button class="button"> Click here </button>
+        <button class="button"> Take picture </button>
         <canvas></canvas>
     </div>
     <div id = "button_div" >
@@ -42,21 +42,12 @@
             </p>
         </div>
     
-    <!-- <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClt7hLxNNQQk0Ekv1J0QWS3bWuKkvW5Ks&callback=initMap">
-    </script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClt7hLxNNQQk0Ekv1J0QWS3bWuKkvW5Ks&libraries=places"></script>
-    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClt7hLxNNQQk0Ekv1J0QWS3bWuKkvW5Ks&libraries=places" defer></script> -->
 </center>
 
     <form id = 'what_food'>
-        Don't see your food?<br>
+       <p id = 'what_food_p'> Don't see your food? Please type in your food below.</p>
         <input id = 'foodInput' type="text" name="food">
         <input id = 'submit' type="submit" value="Submit">
     </form>
-    <div id = "About">
-        <h1 id = "maptitle"></h1>
-    <div id = 'demo'></div>
-    </div>
 </body>
 </html>
