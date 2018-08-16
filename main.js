@@ -126,7 +126,7 @@ function snapShot(){
 
 const constraints = {
     audio: false,
-    video: true
+    video: true  
 }
 
 function handleSuccess(stream){
@@ -145,16 +145,10 @@ function gotoMaps(event){
 }
 
 function saveFood(food){
-    // const maptitle = document.querySelector('#maptitle'); 
-    // maptitle.innerText = "Donate " + food + " to:" 
-    // const about = document.querySelector('#About');  
-    // about.style.display = "initial"; 
-
     button_div.style.display = 'none'; 
     food_form.style.display = "none"; 
     window.location.assign("index2.html?value=" + food); 
     foodelement = window.location.search.substring(7); 
     console.log(foodelement);
 }
-
 
