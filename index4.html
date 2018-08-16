@@ -1,32 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style4.css">
+<html>
+  <head>
+    <title>Place Searches</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+      var map;
+      var infowindow;
+
+      function initMap() {
+        var pyrmont = {lat: 40.742451, lng: -74.005958};
+
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: pyrmont,
+          zoom: 15
+        });
+
+        infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        var request = {
+            location: new google.maps.LatLng(pyrmont),
+            radius: 500,
+            // type: ['park']
+            keyword: 'food bank'
+        }
+
+        service.nearbySearch(request, callback);
+
+        // service.nearbySearch({
+        //   location: pyrmont,
+        //   radius: 1000,
+        //   type: ['parks']
+        // }, callback);
+      }
+
+      function callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+          }
+        }
+      }
+
+      function createMarker(place) {
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open(map, this);
+        });
+      }
+    </script>
     <script src="main4.js" defer></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClt7hLxNNQQk0Ekv1J0QWS3bWuKkvW5Ks&libraries=places"></script>
-    <script src="maps.js" defer></script>
-    <title>Messages</title>
-</head>
-<body>
-    <div id = "navbar">
-        <div id = "navbar_img">
-            <img id = "logo" src="https://image.ibb.co/hFy8gU/what_hunger.png" alt="" height="50" width="50">
-        </div>
-        <div id = 'links'>
-            <a href="index3.html">Home</a>
-            <a href="index2.html">Nearby Food Banks</a>
-            <a href="index.html">Donate Food</a>
-        </div>
-        <div id = "Title">
-            <h1 id = "Header"> What's Hunger</h1>
-        </div>
-    </div>  
-    <div id = 'navbar1'>
-    </div>
-    <h1 id = "TitleMap">Donate Food To:</h1>
-    <div id = 'demo'></div>
-</body>
+    <link rel="stylesheet" href="style4.css">
+  </head>
+  <body>
+        <div id = "navbar">
+                <div id = "navbar_img">
+                    <img id = "logo" src="https://image.ibb.co/hFy8gU/what_hunger.png" alt="" height="50" width="50">
+                </div>
+                <div id = 'links'>
+                    <a href="index3.html">Home</a>
+                    <a href="index2.html">Nearby Food Banks</a>
+                    <a href="index.html">Donate Food</a>
+                </div>
+                <div id = "Title">
+                    <h1 id = "Header"> What's Hunger</h1>
+                </div>
+            </div>  
+            <h1 id = "TitleMap">Donate Food To:</h1>
+            <div id = 'navbar1'>
+            </div>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClt7hLxNNQQk0Ekv1J0QWS3bWuKkvW5Ks&libraries=places&callback=initMap" async defer></script>
+  </body>
 </html>

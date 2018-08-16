@@ -43,13 +43,13 @@ body{
     margin-left: 10px; 
     margin-right: 10px; 
 }
-#navbar h1{
-    /* display: none;   */
+/* #navbar h1{
+    display: none;  
     color: white; 
     font-size: 25px;     
-}
+}  */
 
-/* navbar1{
+#navbar1{
     font-family: cursive;
     display: flex; 
     flex-direction: column; 
@@ -58,9 +58,14 @@ body{
     top: 53px;
     left: 0px;
     color: black; 
-} */
+    z-index: 1;
+} 
     
-#demo img{ 
+#TitleMap{ 
+    color: white; 
+    text-align: center; 
+} 
+/* #demo img{ 
     width: 100%; 
 }
 
@@ -68,3 +73,8 @@ body{
     color: white; 
     text-align: center; 
 } 
+
+#map {
+    height: 100%;
+    visibility: visible;
+  } */

@@ -147,7 +147,7 @@ function gotoMaps(event){
 function saveFood(food){
     button_div.style.display = 'none'; 
     food_form.style.display = "none"; 
-    window.location.assign("index2.html?value=" + food); 
+    window.location.assign("index4.html?value=" + food); 
     foodelement = window.location.search.substring(7); 
     console.log(foodelement);
 }

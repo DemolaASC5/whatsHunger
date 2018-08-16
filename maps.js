@@ -20,3 +20,4 @@ function showPosition(position){
     '&zoom=11&size=400x400&markers=color:red%7Clabel:A%7C10026%7C10038%7C10029';
     document.querySelector("#demo").innerHTML = "<img src='" + img_url+"'>";
 }
+

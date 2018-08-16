@@ -1,9 +1,9 @@
-document.querySelector('#logo').addEventListener('click', onClick); 
+const logobar = document.querySelector('#logo'); 
+logobar.addEventListener('click', onClick); 
 let logo_counter = 0;
 const logoname = document.querySelector('#Title');
-const margin = screen.width/4 -50;  
+const margin = screen.width/5 -50;  
 logoname.style.marginLeft = margin + "px"; 
-// let foodelement; 
 
 function onClick(event){ 
     createNewNav();
@@ -57,3 +57,24 @@ function createNewNav(){
         navbar1.style.display = "initial"; 
     }
 }
+
+const header = window.location.search.substring(7); 
+if(header === ""){
+    console.log('hi'); 
+}
+else{
+    createHeader(); 
+} 
+function createHeader(){ 
+    const h1 = document.querySelector('#TitleMap'); 
+    h1.innerText = "Donate " + header + " to:"; 
+}
+
+
+// var map;
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById('map'), {
+//     center: {lat: -34.397, lng: 150.644},
+//     zoom: 8
+//   });
+// }
