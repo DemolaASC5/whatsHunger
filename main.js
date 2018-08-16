@@ -6,6 +6,8 @@ const margin = screen.width/4 -50;
 logoname.style.marginLeft = margin + "px"; 
 const button_div = document.querySelector('#button_div'); 
 button_div.style.display = "none"; 
+const definefood = document.querySelector('#definefood'); 
+definefood.style.display =  "none"; 
 let foodelement; 
 
 
@@ -79,7 +81,7 @@ function snapShot(){
     let img1 = document.querySelector('canvas'); 
     img1 = canvas.toDataURL();
     img1 = img1.replace("data:image/png;base64,", "");
-
+    definefood.style.display =  "initial"; 
     const app = new Clarifai.App({
         apiKey: 'b9cc00249dc74a449cbdef1d7b0b82a5'
     });
